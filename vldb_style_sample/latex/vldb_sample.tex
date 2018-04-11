@@ -1,0 +1,198 @@
+% THIS IS AN EXAMPLE DOCUMENT FOR VLDB 2012
+% based on ACM SIGPROC-SP.TEX VERSION 2.7
+% Modified by  Gerald Weber <gerald@cs.auckland.ac.nz>
+% Removed the requirement to include *bbl file in here. (AhmetSacan, Sep2012)
+% Fixed the equation on page 3 to prevent line overflow. (AhmetSacan, Sep2012)
+
+\documentclass{vldb}
+\usepackage{graphicx}
+\usepackage{balance}  % for  \balance command ON LAST PAGE  (only there!)
+\usepackage{todonotes}
+
+
+% Include information below and uncomment for camera ready
+\vldbTitle{A Sample Proceedings of the VLDB Endowment Paper in LaTeX Format}
+\vldbAuthors{Ben Trovato, G. K. M. Tobin, Lars Th{\sf{\o}}rv{$\ddot{\mbox{a}}$}ld, Lawrence P. Leipuner, Sean Fogarty, Charles Palmer, John Smith, Julius P.~Kumquat, and Ahmet Sacan}
+\vldbDOI{https://doi.org/TBD}
+
+\begin{document}
+
+% ****************** TITLE ****************************************
+
+\title{LOKI}
+%{A Sample {\ttlit Proceedings of the VLDB Endowment} Paper in LaTeX
+%Format\titlenote{for use with vldb.cls}}
+
+
+% possible, but not really needed or used for PVLDB:
+%\subtitle{[Extended Abstract]
+%\titlenote{A full version of this paper is available as\textit{Author's Guide to Preparing ACM SIG Proceedings Using \LaTeX$2_\epsilon$\ and BibTeX} at \texttt{www.acm.org/eaddress.htm}}}
+
+% ****************** AUTHORS **************************************
+
+% You need the command \numberofauthors to handle the 'placement
+% and alignment' of the authors beneath the title.
+%
+% For aesthetic reasons, we recommend 'three authors at a time'
+% i.e. three 'name/affiliation blocks' be placed beneath the title.
+%
+% NOTE: You are NOT restricted in how many 'rows' of
+% "name/affiliations" may appear. We just ask that you restrict
+% the number of 'columns' to three.
+%
+% Because of the available 'opening page real-estate'
+% we ask you to refrain from putting more than six authors
+% (two rows with three columns) beneath the article title.
+% More than six makes the first-page appear very cluttered indeed.
+%
+% Use the \alignauthor commands to handle the names
+% and affiliations for an 'aesthetic maximum' of six authors.
+% Add names, affiliations, addresses for
+% the seventh etc. author(s) as the argument for the
+% \additionalauthors command.
+% These 'additional authors' will be output/set for you
+% without further effort on your part as the last section in
+% the body of your article BEFORE References or any Appendices.
+
+\numberofauthors{1} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+Poonam Kumari\\
+       \affaddr{Supervised by Dr. Oliver Kennedy}\\
+       \affaddr{State University of New York at Buffalo, Buffalo, NY, USA}\\
+       \email{\{poonamku,okennedy\}@buffalo.edu}
+}
+% There's nothing stopping you putting the seventh, eighth, etc.
+% author on the opening page (as the 'third row') but we ask,
+% for aesthetic reasons that you place these 'additional authors'
+% in the \additional authors block, viz.
+\additionalauthors{Additional authors: John Smith (The Th{\o}rv\"{a}ld Group, {\texttt{jsmith@affiliation.org}}), Julius P.~Kumquat
+(The \raggedright{Kumquat} Consortium, {\small \texttt{jpkumquat@consortium.net}}), and Ahmet Sacan (Drexel University, {\small \texttt{ahmetdevel@gmail.com}})}
+\date{30 July 1999}
+% Just remember to make sure that the TOTAL number of authors
+% is the number that will appear on the first page PLUS the
+% number that will appear in the \additionalauthors section.
+
+
+\maketitle
+
+\begin{abstract}
+It has become very easy to obtain a large dataset for experimental analysis or personal use. But most of these datasets are unlabeled or poorly labeled. Absence of labels, leads to difficulty in accessing the data.
+
+We propose the design of a system LOKI, which would serve as a knowledge base for storing column-naming heuristics, as well as an interactive tool: the LOKI editor for populating the knowledge-base.
+
+\todo[inline]{Poonam:paraphrase, taken from HILDA paper} 
+The LOKI editor primes the knowledge base by learning from example data (e.g., from open data portals), and assists domain experts in reviewing and refining the resulting heuristic naming schemes. We identify specific issues arising from training and show how the LOKI editor streamlines the process of manually repairing these issues.
+
+\end{abstract}
+
+\section{Motivation}
+Big datasets are available in abundance which are being used by data scientists for and database community for research purpose. But we cannot use these datasets in their raw form, since they might be missing labels, values, etc. The most common issue faced while using these datasets is unlabeled or poorly labeled data. Without a system in place to label the data, user can perform following operations (1) Guess and label based on the data provided. (2) Write a script to automate the process of guessing. Case 1 would prove to be hectic if we have large data in hand, and is error prone. In case 2, same script might not work for other datasets, user would need to modify it. The other problem with case 2 is related to the documentation of the script. Once the initial script writer leaves without any documentation, the next user has to put in a lot of effort in reverse-engineering it.
+
+\todo[inline]{Poonam:rewrite, taken from HILDA paper} 
+We propose to end the suffering with Label Once, and Keep It (LOKI),
+a data-ingest middleware for incremental, re-usable schema recovery.
+When a user first points LOKI at a new tabular data set, LOKI proposes a schema for it. It then collects feedback, both learning and also preserving schema metadata for later use. In short, LOKI will allow users to assemble schemas on-demand, both (re-)discovering and incrementally refining schema definitions in response to changing data needs. 
+
+\subsection{Terms}
+\begin{itemize}
+	\item Domain: 
+	\item Concept:
+	\item Unit:
+	\item Name:
+	\item Signature:
+	\item Column:
+\end{itemize}
+
+Signature consists of 
+\begin{enumerate}
+	\item Domain
+	\item Range
+	\item Distribution
+	\item Set of values
+	\item type
+\end{enumerate}
+
+\subsection{Research Questions}
+Ways to describe a column
+\begin{enumerate}
+	\item Type of distribution (uniform, lognormal, zipfian)
+	\item Range of values
+	\item Type of data (numerical, categorical, date)
+	\item Given column name, guess the domain
+	\item Mean, max, min, std
+	\item Mathematical units, guess what the unit represents
+\end{enumerate}
+
+Challenges in labeling a column
+\begin{enumerate}
+	\item does the column signature match more than one column
+	\item domain of the data, would help narrow down the search
+	\item There might be many column names with primitive data types like year, date, etc
+	\item column cannot be described effectively by a distribution
+	\item column has generic data
+\end{enumerate}
+
+\section{Background and Related Work}
+
+\section{Experiments}
+Describe how KB was created for datasets. System design from HILDA paper
+
+\section{Research Plan}
+Tackling the challenges of describing and labeling a column
+\begin{enumerate}
+	\item Column might match on multiple signatures
+	\item Similar concepts with different signatures
+	\item Similar signatures for different concepts
+	\item Insufficient signal for signature based matching.
+		->types of signature insufficient
+	\item different signatures combine differently to id concepts
+	\item performance
+\end{enumerate}
+
+
+\section{Conclusion}
+
+%\end{document}  % This is where a 'short' article might terminate
+
+% ensure same length columns on last page (might need two sub-sequent latex runs)
+\balance
+
+%ACKNOWLEDGMENTS are optional
+\section{Acknowledgments}
+
+
+% The following two commands are all you need in the
+% initial runs of your .tex file to
+% produce the bibliography for the citations in your paper.
+\bibliographystyle{abbrv}
+%\bibliography{vldb_sample}  % vldb_sample.bib is the name of the Bibliography in this case
+% You must have a proper ".bib" file
+%  and remember to run:
+% latex bibtex latex latex
+% to resolve all references
+
+\section{References}
+
+%APPENDIX is optional.
+% ****************** APPENDIX **************************************
+% Example of an appendix; typically would start on a new page
+%pagebreak
+
+
+
+\end{document}
