@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.8.31)  11 APR 2018 14:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.8.31)  12 APR 2018 09:14
 entering extended mode
 **./vldb_sample.tex
 (vldb_sample.tex
@@ -518,18 +518,18 @@ LaTeX Info: Redefining \addtolength on input line 81.
 ) (vldb_sample.aux)
 \openout1 = `vldb_sample.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -620,30 +620,30 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 91.
+LaTeX Font Info:    Try loading font information for U+msa on input line 92.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 91.
+LaTeX Font Info:    Try loading font information for U+msb on input line 92.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 91.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 92.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 91.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 92.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 91.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 92.
 
-Overfull \hbox (7.05359pt too wide) in paragraph at lines 101--101
+Overfull \hbox (7.05359pt too wide) in paragraph at lines 102--102
 \OT1/cmr/m/n/8 Ben Trovato, G. K. M. To-bin, Lars Th\OT1/cmss/m/n/8 \OT1/cmr/m
 /n/8 rv$[]$ld, Lawrence P. Leipuner,
  []
@@ -652,33 +652,61 @@ Overfull \hbox (7.05359pt too wide) in paragraph at lines 101--101
 
 
 ]
-Overfull \hbox (3.43924pt too wide) in paragraph at lines 161--163
+Overfull \hbox (3.43924pt too wide) in paragraph at lines 155--157
 []\OT1/cmr/m/n/9 Insufficient sig-nal for sig-na-ture based match-ing. ->types
  []
 
-[2] (vldb_sample.aux) ) 
+
+Overfull \hbox (2.24232pt too wide) in paragraph at lines 167--173
+\OT1/cmr/m/n/9 through in-clu-sion func-tions (e.g. reg-u-lar ex-pres-sions). W
+ran-
+ []
+
+
+Overfull \hbox (5.48244pt too wide) in paragraph at lines 174--176
+[]\OT1/cmr/m/n/9 An or-thog-o-nal ap-proach to mod-el-ing and match-ing columns
+
+ []
+
+
+Overfull \hbox (1.38628pt too wide) in paragraph at lines 179--181
+\OT1/cmr/m/n/9 nu-mer-i-cal, date-time or string. We are in-fer-ring the dataty
+pes
+ []
+
+Missing character: There is no â in font cmr9!
+Missing character: There is no € in font cmr9!
+Missing character: There is no ¢ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no € in font cmr9!
+Missing character: There is no ¢ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no € in font cmr9!
+Missing character: There is no ¢ in font cmr9!
+[2] (vldb_sample.bbl) [3] (vldb_sample.aux) ) 
 Here is how much of TeX's memory you used:
- 13501 strings out of 493323
- 262200 string characters out of 3139063
- 314535 words of memory out of 3000000
- 16736 multiletter control sequences out of 15000+200000
- 27539 words of font info for 65 fonts, out of 3000000 for 9000
+ 13528 strings out of 493323
+ 262658 string characters out of 3139063
+ 319860 words of memory out of 3000000
+ 16759 multiletter control sequences out of 15000+200000
+ 27884 words of font info for 66 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,11n,80p,913b,748s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc
-}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/u
-hvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/urw/times/utmri8a.pfb>
-Output written on vldb_sample.pdf (2 pages, 131930 bytes).
+{C:/Program Files/MiKTeX 2.9/fonts
+/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
+rw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uh
+vr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on vldb_sample.pdf (3 pages, 161452 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
+ 64 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

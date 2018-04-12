@@ -1,35 +1,42 @@
 \begin{thebibliography}{1}
 
-\bibitem{bowman:reasoning}
-M.~Bowman, S.~K. Debray, and L.~L. Peterson.
-\newblock Reasoning about naming systems.
-\newblock {\em ACM Trans. Program. Lang. Syst.}, 15(5):795--825, November 1993.
+\bibitem{fabian2007yago}
+M.~Fabian, K.~Gjergji, W.~Gerhard, et~al.
+\newblock Yago: A core of semantic knowledge unifying wordnet and wikipedia.
+\newblock In {\em 16th International World Wide Web Conference, WWW}, pages
+  697--706, 2007.
 
-\bibitem{braams:babel}
-J.~Braams.
-\newblock Babel, a multilingual style-option system for use with latex's
-  standard document styles.
-\newblock {\em TUGboat}, 12(2):291--301, June 1991.
+\bibitem{fisher2005pads}
+K.~Fisher and R.~Gruber.
+\newblock Pads: a domain-specific language for processing ad hoc data.
+\newblock In {\em ACM Sigplan Notices}, volume~40, pages 295--304. ACM, 2005.
 
-\bibitem{clark:pct}
-M.~Clark.
-\newblock Post congress tristesse.
-\newblock In {\em TeX90 Conference Proceedings}, pages 84--89. TeX Users Group,
-  March 1991.
+\bibitem{kandel2011wrangler}
+S.~Kandel, A.~Paepcke, J.~Hellerstein, and J.~Heer.
+\newblock Wrangler: Interactive visual specification of data transformation
+  scripts.
+\newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
+  Computing Systems}, pages 3363--3372. ACM, 2011.
 
-\bibitem{herlihy:methodology}
-M.~Herlihy.
-\newblock A methodology for implementing highly concurrent data objects.
-\newblock {\em ACM Trans. Program. Lang. Syst.}, 15(5):745--770, November 1993.
+\bibitem{nandi2013gestural}
+A.~Nandi, L.~Jiang, and M.~Mandel.
+\newblock Gestural query specification.
+\newblock {\em Proceedings of the VLDB Endowment}, 7(4):289--300, 2013.
 
-\bibitem{Lamport:LaTeX}
-L.~Lamport.
-\newblock {\em LaTeX User's Guide and Document Reference Manual}.
-\newblock Addison-Wesley Publishing Company, Reading, Massachusetts, 1986.
+\bibitem{ping2017datasynthesizer}
+H.~Ping, J.~Stoyanovich, and B.~Howe.
+\newblock Datasynthesizer: Privacy-preserving synthetic datasets.
+\newblock In {\em Proceedings of the 29th International Conference on
+  Scientific and Statistical Database Management}, page~42. ACM, 2017.
 
-\bibitem{salas:calculus}
-S.~Salas and E.~Hille.
-\newblock {\em Calculus: One and Several Variable}.
-\newblock John Wiley and Sons, New York, 1978.
+\bibitem{raman2001potter}
+V.~Raman and J.~M. Hellerstein.
+\newblock Potter's wheel: An interactive data cleaning system.
+\newblock In {\em VLDB}, volume~1, pages 381--390, 2001.
+
+\bibitem{zhu2016lsh}
+E.~Zhu, F.~Nargesian, K.~Q. Pu, and R.~J. Miller.
+\newblock Lsh ensemble: Internet-scale domain search.
+\newblock {\em Proceedings of the VLDB Endowment}, 9(12):1185--1196, 2016.
 
 \end{thebibliography}

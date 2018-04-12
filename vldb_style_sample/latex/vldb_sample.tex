@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{balance}  % for  \balance command ON LAST PAGE  (only there!)
 \usepackage{todonotes}
+\newcommand{\systemname}{\textbf{LOKI}\xspace}
 
 
 % Include information below and uncomment for camera ready
@@ -91,7 +92,7 @@ Poonam Kumari\\
 \maketitle
 
 \begin{abstract}
-It has become very easy to obtain a large dataset for experimental analysis or personal use. But most of these datasets are unlabeled or poorly labeled. Absence of labels, leads to difficulty in accessing the data.
+It has become very easy to obtain a large dataset for experimental analysis. But most of these datasets are unlabeled or poorly labeled. Absence of labels, leads to difficulty in accessing the data.
 
 We propose the design of a system LOKI, which would serve as a knowledge base for storing column-naming heuristics, as well as an interactive tool: the LOKI editor for populating the knowledge-base.
 
@@ -110,62 +111,140 @@ When a user first points LOKI at a new tabular data set, LOKI proposes a schema 
 
 \subsection{Terms}
 \begin{itemize}
-	\item Domain: 
-	\item Concept:
-	\item Unit:
-	\item Name:
-	\item Signature:
-	\item Column:
+	\item Context: Domain to which the column belongs.
+	\item Concept: Noun that describes a column.
+	\item Unit: Mathematical unit associated with the column. e.g. Kilogram, Hectares, etc.
+	\item Name: String name associated with the column. e.g. A column containing patients blood pressure might be named BP.
+	\item Signature: Parameters used to describe a column. It is a combination of context, Range, Distribution, set of values and the type of data.
+	\item Column: 
 \end{itemize}
 
-Signature consists of 
-\begin{enumerate}
-	\item Domain
-	\item Range
-	\item Distribution
-	\item Set of values
-	\item type
-\end{enumerate}
 
-\subsection{Research Questions}
-Ways to describe a column
-\begin{enumerate}
-	\item Type of distribution (uniform, lognormal, zipfian)
-	\item Range of values
-	\item Type of data (numerical, categorical, date)
-	\item Given column name, guess the domain
-	\item Mean, max, min, std
-	\item Mathematical units, guess what the unit represents
-\end{enumerate}
+\section{Research Questions}
+Given an unlabeled or poorly labeled dataset, user wants to analyze this data. And since the dataset is unlabeled, the first step user needs to perform is to guess the schema names. Our goal is to make it easier for the user to properly label data, and help preserve those labels for future use. 
 
-Challenges in labeling a column
-\begin{enumerate}
-	\item does the column signature match more than one column
-	\item domain of the data, would help narrow down the search
-	\item There might be many column names with primitive data types like year, date, etc
-	\item column cannot be described effectively by a distribution
-	\item column has generic data
-\end{enumerate}
+\todo[inline]{Poonam:rewrite, taken from HILDA paper} 
+However, to accomplish this, we first need a knowledge-base of heuristics, domain knowledge, and dirty tricks. In principle, we might implement such a knowledge base as a neural network, train it on example data, and use it to suggest schemas. However, this approach suffers from a host of limitations:
+(1) Lack of generality: A neural network tuned for use with one
+type of training data may need to be retuned for other scenarios.
+(2) Lack of extensibility: Adding new training data or knowledge network misclassifies a column name, it can be hard to debug and
+refine the result. Instead, we opt for an interactive approach. We
+present the LOKI knowledge-base, a flexible, extensible infrastructure
+for collecting schema-naming heuristics.We show how simple,
+efficient off-the-shelf techniques can be used to quickly prime the
+knowledge-base using example data. Then, we introduce an interactive
+editor that we are designing as part of LOKI to allow domain
+experts to refine the knowledge-base. In particular, we focus on our
+preliminary work to streamline manual refinement of knowledge
+learned from one type of example data. We show how, the editor
+can be used to help experts to quickly identify and resolve errors
+and ambiguity in the LOKI knowledge-base.
+Concretely, the contributions of this paper include: (1) We introduce
+LOKI in Section 2 and detail the structure of its knowledge-
+base in Section 3. (2) We illustrate how the LOKI editor
+pre-populates the knowledge-base by learning from example data
+in Section 4. (3)We identify specific errors that arise in the training
+process and showhowthe LOKI editor facilitates efficient detection
+and manual repair of the error in Section 5.
 
-\section{Background and Related Work}
-
-\section{Experiments}
-Describe how KB was created for datasets. System design from HILDA paper
-
-\section{Research Plan}
-Tackling the challenges of describing and labeling a column
+\subsection{Challenges}
 \begin{enumerate}
 	\item Column might match on multiple signatures
 	\item Similar concepts with different signatures
 	\item Similar signatures for different concepts
 	\item Insufficient signal for signature based matching.
-		->types of signature insufficient
+	->types of signature insufficient
 	\item different signatures combine differently to id concepts
 	\item performance
 \end{enumerate}
 
+\section{Related Work}
+\todo[inline]{Poonam:rewrite, taken from HILDA paper} 
+Data distributions have been used for similar purposes in other work.  
+For example GestureQuery~\cite{nandi2013gestural} uses data similarity between two attributes to select candidate attributes for an equi-join.  
+To maximize the join arity, the system counts the number of times each value from one attribute appears in the other and a histogram is constructed from the counts for all of the values.
+
+Wrangler \cite{kandel2011wrangler} and Potter's wheel \cite{raman2001potter} detect data domains through inclusion functions (e.g. regular expressions).
+Wrangler in particular infers the data type of a column and highlights errors based on inconsistent data types. 
+Wrangler also has several operators like split and unfold that create new columns.
+The split operator decomposes composite data values into component distributions.  
+The unfold operator reverses a table pivot, collapsing data laid out as key-value pairs into columns.  
+A useful application of the LOKI knowledge-base that we hope to explore in future work is using it to detect opportunities for applying such operators.
+
+An orthogonal approach to modeling and matching columns is to use ontologies, which express entities, facts, relations between facts and properties of relations
+Ontologies like Yago \cite{fabian2007yago} could be used to identify semantic properties that relate columns.
+
+A data summary called the data describer is used in \cite{ping2017datasynthesizer}. The data types, correlations and distributions of the attributes in a private dataset are listed. Each attribute is categorized into either numerical or non-numerical. If non-numerical attribute cannot be parsed as datetime then it is considered to be a string.
+
+Data describer takes in a CSV file and infers the data types and domains. The attribute datatypes are parsed as numerical, datetime or string. We are inferring the datatypes as well. When run in correlated attribute mode, data describer provides corelation between attributes. We could use this functionality in LOKI.
+% \todo{What exactly is the purpose of the data describer.  How is it used?  How do its goals differ from ours, and what are the implications on its design?} 
+
+PADS \cite{fisher2005pads} helps users to understand the layout and meaning of data by designing syntactic descriptions of the data.
+Based on the syntax, accumulators track the number of good values, the number of bad values, and the distribution of legal values.
+This technique could be used in LOKI to help capture expert knowledge.
+
+There is an increasing number of datasets in which well-structured attributes
+(with or without a name) can be identified, each containing a set of values called a domain. There is lack of schema description in most of the datasets.
+LSH Ensemble is used in \cite{zhu2016lsh} to find domains that maximally contain a query dataset, which can help to find datasets that best augment a given set of data.
+
+\section{Experiments}
+\todo[inline]{Poonam:rewrite, taken from HILDA paper} 
+Describe how KB was created for datasets. System design from HILDA paper
+
+\section{Research Plan}
+We plan several extensions as future work focused on building and
+refining a knowledge-base for storing column-naming heuristics.
+• Use of contextual information: Contextual information
+such as ontologies, units and data domains could be used to augment
+the LOKI knowledge base (KB). We could use a network of
+semantic relations such as BabelNet strengthen data models for
+training the KB as well as providing curation recommendations
+to experts. [2] • Recommendation of columns for query: Concepts
+in the KB could be used to recommend columns that could be
+in a query based on the columns that are already present. • Smarter
+Matchers:We would develop matchers which regocognize a wider
+spectrum of data. For example, regular expression matchers could
+be used to detect geolocation data. Matchers which can identify
+synonymous labels could help experts in the curation process.
+
+\todo[inline]{Poonam:for reference} 
+To overcome the assumptions and limitations of the current
+framework we propose the following research plan: (1)
+We want to generalize candidate questions to include nonboolean
+atoms. In this way, same incomplete data in different
+candidate questions can be confirmed in one confirmation
+round. (2) The current framework assumes the probability
+distributions for incomplete data are given. However,
+this is not always feasible. We want to make use of the existing
+reliable data to estimate the probability distribution of
+incomplete data. (3) In many domains, there exist models
+that can be utilized to increase query result accuracy without
+consulting users. Currently, in the UDLM component,
+we mainly utilized the user-defined models to preprocess incomplete
+data at no cost. We want to explore how to learn
+models from system-user interactions. For instance, in data
+integration, possible schema matches are candidate models,
+one of which is a correct match. We can treat each candidate
+model as probabilistically related to the real model. We can
+integrate these candidate models with our current framework
+and adjust the confidence of a model on confirmation.
+The probability will converge on true model. This learned
+model will be utilized adaptively in subsequent queries. (4)
+Our current framework considers user feedback is always
+correct. However, humans may make mistakes. In crowdsourcing,
+humans may provide incorrect answers to tasks
+accidentally or on purpose. In medical expert systems, user
+feedback is obtained based on test results by machines. The
+test results may not be 100% accurate. We want to build
+a user profile to record the credibility of user feedback. We
+need to decide how to integrate this profile with our frame work and based on the correctness of the decisions made
+
 
 \section{Conclusion}
+\todo[inline]{Poonam:for reference} 
+This paper proposes the design of a system which would help build a knowledge base along with an interactive tool for populating the knowledge base. 
+\todo[inline]{Mention Query model?}
+
 
 %\end{document}  % This is where a 'short' article might terminate
 
@@ -174,19 +253,21 @@ Tackling the challenges of describing and labeling a column
 
 %ACKNOWLEDGMENTS are optional
 \section{Acknowledgments}
+This work was supported by NSF Awards IIS-1750460, ACI-1640864
+and by a gift from Oracle. The conclusions and opinions in this
+work are solely those of the authors and do not represent the views
+of the National Science Foundation or Oracle.
 
 
 % The following two commands are all you need in the
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 \bibliographystyle{abbrv}
-%\bibliography{vldb_sample}  % vldb_sample.bib is the name of the Bibliography in this case
+\bibliography{vldb_sample}  % vldb_sample.bib is the name of the Bibliography in this case
 % You must have a proper ".bib" file
 %  and remember to run:
 % latex bibtex latex latex
 % to resolve all references
-
-\section{References}
 
 %APPENDIX is optional.
 % ****************** APPENDIX **************************************
