@@ -94,20 +94,16 @@ Poonam Kumari\\
 \maketitle
 
 \begin{abstract}
-It has become very easy to obtain a large dataset for experimental analysis. But most of these datasets are unlabeled or poorly labeled. Absence of labels, leads to difficulty in accessing the data.
+It has become very easy to obtain a large dataset for experimental analysis. Along with the ease arises the need to document the dataset for future use. Apart from documentation another challenge is posed by unlabeled or poorly labeled. Absence of labels, leads to difficulty in accessing the data.
 
-We propose the design of a system LOKI, which would serve as a knowledge base for storing column-naming heuristics, as well as an interactive tool: the LOKI editor for populating the knowledge-base.
-
-\todo[inline]{Poonam:paraphrase, taken from HILDA paper} 
-The LOKI editor primes the knowledge base by learning from example data (e.g., from open data portals), and assists domain experts in reviewing and refining the resulting heuristic naming schemes. We identify specific issues arising from training and show how the LOKI editor streamlines the process of manually repairing these issues.
-
+We propose the design of a system, the first part of the system LOKI would serve as a knowledge base for storing rules and column-naming heuristics, as well as provide an interactive tool: the LOKI editor for populating the knowledge-base. The second part of the system would help start documentation for a dataset. 
 \end{abstract}
 
 \section{Motivation}
 Big datasets are available in abundance and are being used by data scientists and database community for research purpose. These datasets are often curated, analyzed and forgotten without any documentation about the dataset itself. We propose to end this cycle by designing a system with a central goal of inferring column names by creating a knowledge base, which would store a collection of rules and column-naming heuristics (LOKI: Label Once and Keep It), as well as help start the documentation for a dataset (DOKI: Document Once and Keep It).
 
-So when presented a new dataset our system would start with creating LOKI and DOKI. LOKI would help an analyst in inferring the column names for new datasets and using DOKI the analyst can start documenting the dataset. Apart from creating a knowledge base LOKI also provides an interactive tool for populating the knowledge base.
-
+So when presented a new dataset our system would start with creating LOKI and DOKI. LOKI would help an analyst in inferring the column names for new datasets and using DOKI the analyst can start documenting the dataset. Apart from creating a knowledge base LOKI also provides an interactive tool for populating the knowledge base.\\
+\\
 
 \section{Research Questions}
 Given a dataset the user wants to analyze, the system performs two steps (1) create LOKI and (2) create DOKI. Once a dataset is documented the analyst can save the documentation for future use.  
@@ -129,68 +125,30 @@ Unit refers to the mathematical unit associated with a column. e.g. Kilogram, He
 
 \newtheorem{exmp}{Example}[section]
 \begin{exmp}
-	This is an example
+	If DOKI is presented with the tabular dataset, then the documentation would store details about the columns and the dataset itself. For instance the values stored for column Fruithectares would be context: agriculture, column name: Fruithectares, unit: Hectares, Data type: Float, Data distribution: Uniform.
 \end{exmp}
 
 \begin{center}
-	\begin{tabular}{||c c c c||} 
+	\begin{tabular}{||c c c||} 
 		\hline
-		Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+		Fruithectares & Vegcount & Fruityieldtons \\ [0.5ex]
 		\hline\hline
-		1 & 6 & 87837 & 787 \\ 
+		5.8 & 0 & 1.5 \\ 
 		\hline
-		2 & 7 & 78 & 5415 \\
+		0 & 1.26 & 0 \\
 		\hline
-		3 & 545 & 778 & 7507 \\
+		2.6 & 0 & 7.2 \\
 		\hline
-		4 & 545 & 18744 & 7560 \\
+		4.05 & 0.089 & 1.1 \\
 		\hline
-		5 & 88 & 788 & 6344 \\ [1ex] 
+		0.17 & 6.5 & 0.48 \\ [1ex] 
 		\hline
 	\end{tabular}
 \end{center}
 
-analyst can reuse it without any difficulty. The analyst does not have to document the dataset again, and is well versed with the dataset through the information stored in knowledge base(data type, data distribution). The knowledge base would store expert inputs and feedback \todo[inline]{Explain.What do you mean by expert inputs and feedback?} and also help the analyst in identifying schema names for new datasets. The system named LOKI serves as a knowledge base and an interactive tool for populating the knowledge base. When a user first points LOKI at a new tabular data set, LOKI proposes a schema \todo[inline]{just schema?} for it. It then collects feedback, both learning and also preserving schema metadata for later use.
+Once DOKI starts documenting the dataset, analyst does not have to document it again, and is well versed with the dataset through the information stored in LOKI. 
 
-
-\todo[inline]{Poonam:rewrite, taken from HILDA paper} 
-In short, LOKI will allow users to assemble schemas on-demand, both (re-)discovering and incrementally refining schema definitions in response to changing data needs. 
-
-However, to accomplish this, we first need a knowledge-base of heuristics, domain knowledge, and dirty tricks. In principle, we might implement such a knowledge base as a neural network, train it on example data, and use it to suggest schemas. However, this approach suffers from a host of limitations:
-(1) Lack of generality: A neural network tuned for use with one
-type of training data may need to be retuned for other scenarios.
-(2) Lack of extensibility: Adding new training data or knowledge network misclassifies a column name, it can be hard to debug and
-refine the result. Instead, we opt for an interactive approach. We
-present the LOKI knowledge-base, a flexible, extensible infrastructure
-for collecting schema-naming heuristics.We show how simple,
-efficient off-the-shelf techniques can be used to quickly prime the
-knowledge-base using example data. Then, we introduce an interactive
-editor that we are designing as part of LOKI to allow domain
-experts to refine the knowledge-base. In particular, we focus on our
-preliminary work to streamline manual refinement of knowledge
-learned from one type of example data. We show how, the editor
-can be used to help experts to quickly identify and resolve errors
-and ambiguity in the LOKI knowledge-base.
-Concretely, the contributions of this paper include: (1) We introduce
-LOKI in Section 2 and detail the structure of its knowledge-
-base in Section 3. (2) We illustrate how the LOKI editor
-pre-populates the knowledge-base by learning from example data
-in Section 4. (3)We identify specific errors that arise in the training
-process and showhowthe LOKI editor facilitates efficient detection
-and manual repair of the error in Section 5.
-
-Documentation would consist of storing the following information about the dataset:
-
-\begin{itemize}
-	\item Context: Domain to which the column belongs.
-	\item Concept: Noun that describes a column.
-	\item Unit: Mathematical unit associated with the column. e.g. Kilogram, Hectares, etc.
-	\item Name: String name associated with the column. e.g. A column containing patients blood pressure might be named BP.
-	\item Signature: Parameters used to describe a column. It is a combination of context, Range, Distribution, set of values and the type of data.
-	\item Column: 
-	\item Data type:
-	\item Data distribution:
-\end{itemize}
+The core component of LOKI is a knowledge-base that is used to identify column names. The knowledge-base is broken down into two parts, one heuristic-based, and the other feedback-based. In short, LOKI will allow users to assemble schemas on-demand, both (re-)discovering and incrementally refining schema definitions in response to changing data needs. 
 
 \subsection{Challenges}
 \begin{enumerate}
@@ -231,10 +189,6 @@ This technique could be used in LOKI to help capture expert knowledge.
 There is an increasing number of datasets in which well-structured attributes
 (with or without a name) can be identified, each containing a set of values called a domain. There is lack of schema description in most of the datasets.
 LSH Ensemble is used in \cite{zhu2016lsh} to find domains that maximally contain a query dataset, which can help to find datasets that best augment a given set of data.
-
-\section{Experiments}
-\todo[inline]{Poonam:rewrite, taken from HILDA paper} 
-Describe how KB was created for datasets. System design from HILDA paper
 
 \section{Research Plan}
 We plan several extensions as future work focused on building and
