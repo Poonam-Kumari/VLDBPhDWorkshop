@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.8.31)  15 APR 2018 09:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.8.31)  15 APR 2018 12:32
 entering extended mode
 **./vldb_sample.tex
 (vldb_sample.tex
@@ -653,6 +653,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--107
  []
 
 
+Overfull \hbox (12.05214pt too wide) in paragraph at lines 111--112
+[]\OT1/cmr/m/n/9 LOKI helps in stream-lin-ing the pro-cess of de-vel-op-ing sch
+emas
+ []
+
+
+Overfull \hbox (4.34065pt too wide) in paragraph at lines 111--112
+\OT1/cmr/m/n/9 load-ing/initialization code (e.g., a CRE-ATE TA-BLE or Spark
+ []
+
+
 
 pdfTeX warning: pdflatex.exe (file ./graphics/DOKI.pdf): PDF inclusion: found P
 DF version <1.7>, but at most version <1.5> allowed
@@ -663,32 +674,39 @@ Package pdftex.def Info: graphics/DOKI.pdf used on input line 117.
 (pdftex.def)             Requested size: 192.00073pt x 124.35306pt.
 \c@exmp=\count142
 
-Overfull \hbox (12.37955pt too wide) in paragraph at lines 128--129
-[]\OT1/cmr/m/it/9 If DOKI is pre-sented with the tab-u-lar dataset,
+Overfull \hbox (1.13142pt too wide) in paragraph at lines 127--128
+\OT1/cmr/m/it/9 it-self. For in-stance the val-ues stored for col-umn Fruithect
+ares
+ []
+
+
+Overfull \hbox (10.61171pt too wide) in paragraph at lines 127--128
+\OT1/cmr/m/it/9 in 2[] would be con-text: agri-cul-ture, col-umn name: Fruithec
+tares,
  []
 
 [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
  <./graphics/DOKI.pdf>]
-Overfull \hbox (3.43924pt too wide) in paragraph at lines 158--160
+Overfull \hbox (3.43924pt too wide) in paragraph at lines 163--165
 []\OT1/cmr/m/n/9 Insufficient sig-nal for sig-na-ture based match-ing. ->types
  []
 
 
-Overfull \hbox (2.24232pt too wide) in paragraph at lines 170--176
+Overfull \hbox (2.24232pt too wide) in paragraph at lines 172--178
 \OT1/cmr/m/n/9 through in-clu-sion func-tions (e.g. reg-u-lar ex-pres-sions). W
 ran-
  []
 
 
-Overfull \hbox (5.48244pt too wide) in paragraph at lines 177--179
+Overfull \hbox (5.48244pt too wide) in paragraph at lines 179--181
 []\OT1/cmr/m/n/9 An or-thog-o-nal ap-proach to mod-el-ing and match-ing columns
 
  []
 
 
-Overfull \hbox (1.38628pt too wide) in paragraph at lines 182--184
+Overfull \hbox (1.38628pt too wide) in paragraph at lines 184--186
 \OT1/cmr/m/n/9 nu-mer-i-cal, date-time or string. We are in-fer-ring the dataty
 pes
  []
@@ -702,15 +720,19 @@ Missing character: There is no ¢ in font cmr9!
 Missing character: There is no â in font cmr9!
 Missing character: There is no € in font cmr9!
 Missing character: There is no ¢ in font cmr9!
+
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
+
 [2] (vldb_sample.bbl) [3] (vldb_sample.aux) ) 
 Here is how much of TeX's memory you used:
- 13527 strings out of 493323
- 262583 string characters out of 3139063
- 319525 words of memory out of 3000000
- 16759 multiletter control sequences out of 15000+200000
+ 13478 strings out of 493323
+ 261255 string characters out of 3139063
+ 315337 words of memory out of 3000000
+ 16710 multiletter control sequences out of 15000+200000
  26843 words of font info for 61 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,11n,80p,799b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,11n,56p,763b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts
 /enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9
@@ -724,7 +746,7 @@ etic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/urw/times/utmri8a.pfb>
-Output written on vldb_sample.pdf (3 pages, 208895 bytes).
+Output written on vldb_sample.pdf (3 pages, 206365 bytes).
 PDF statistics:
  80 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

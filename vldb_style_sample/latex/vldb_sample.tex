@@ -96,61 +96,66 @@ Poonam Kumari\\
 \begin{abstract}
 It has become very easy to obtain a large dataset for experimental analysis. Along with the ease arises the need to document the dataset for future use. Apart from documentation another challenge is posed by unlabeled or poorly labeled. Absence of labels, leads to difficulty in accessing the data.
 
-We propose the design of a system, the first part of the system LOKI would serve as a knowledge base for storing rules and column-naming heuristics, as well as provide an interactive tool: the LOKI editor for populating the knowledge-base. The second part of the system would help start documentation for a dataset. 
+We propose the design of a system, the first part of the system called LOKI would serve as a knowledge base for storing rules and column-naming heuristics, as well as provide an interactive tool: the LOKI editor for populating the knowledge-base. The second part of the system called DOKI would help start documentation for a dataset. 
 \end{abstract}
 
 \section{Motivation}
-Big datasets are available in abundance and are being used by data scientists and database community for research purpose. These datasets are often curated, analyzed and forgotten without any documentation about the dataset itself. We propose to end this cycle by designing a system with a central goal of inferring column names by creating a knowledge base, which would store a collection of rules and column-naming heuristics (LOKI: Label Once and Keep It), as well as help start the documentation for a dataset (DOKI: Document Once and Keep It).
+Big datasets are available in abundance and are being used by data scientists and database community for research purpose. These datasets are often curated, analyzed and forgotten without any documentation about the dataset itself. We propose to end this cycle by designing a system with a central goal of inferring column names by creating a knowledge base, which would store a collection of rules and column-naming heuristics (LOKI: Label Once and Keep It), as well as help start the documentation for a dataset.
 
-So when presented a new dataset our system would start with creating LOKI and DOKI. LOKI would help an analyst in inferring the column names for new datasets and using DOKI the analyst can start documenting the dataset. Apart from creating a knowledge base LOKI also provides an interactive tool for populating the knowledge base.\\
+So when presented a new dataset our system would start with creating labels using LOKI which would also help an analyst start documenting the dataset. Apart from creating a knowledge base LOKI provides an interactive tool for populating the knowledge base.\\
 \\
 
 \section{Research Questions}
-Given a dataset the user wants to analyze, the system performs two steps (1) create LOKI and (2) create DOKI. Once a dataset is documented the analyst can save the documentation for future use.  
+Given a dataset the user wants to analyze, the system performs two steps (1) create labels (2) help start the documentation. Once a dataset is documented the analyst can save it for future use.  
 
-The first step is to create LOKI which helps in streamlining the process of developing schemas for unlabeled or poorly labeled datasets. LOKI provides users with two modes of interaction: (1) A labeling interface that assists users in assigning names to existing columns of data, and (2) A discovery interface that helps users to search for columns representing particular concepts of interest. These interfaces are supported by a knowledge-base that combines expert-provided heuristics, learned characteristics, as well as historical feedback gathered from users about already-loaded datasets. Once the user has labeled or discovered a sufficient set of columns, LOKI generates appropriate data loading/initialization code (e.g., a CREATE TABLE or Spark DataFrame initializer).
+LOKI helps in streamlining the process of developing schemas for unlabeled or poorly labeled datasets. It provides users with two modes of interaction: (1) A labeling interface that assists users in assigning names to existing columns of data, and (2) A discovery interface that helps users to search for columns representing particular concepts of interest. These interfaces are supported by a knowledge-base that combines expert-provided heuristics, learned characteristics, as well as historical feedback gathered from users about already-loaded datasets. Once the user has labeled or discovered a sufficient set of columns, LOKI generates appropriate data loading/initialization code (e.g., a CREATE TABLE or Spark DataFrame initializer).
 
-Once LOKI is created, the next step is to create DOKI. ~\ref{fig:DOKI} illustrates the different components of dataset that DOKI helps store.
+Once a knowledge base is created, the next step is to start documenting the dataset. ~\ref{fig:DOKI} illustrates the different components of dataset that LOKI would store.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\columnwidth]{graphics/DOKI.pdf}
-	\caption{Document Once and Keep It overview}
+	\caption{Overview of Dataset Documentation}
 	\label{fig:DOKI}
 	\vspace*{-1mm}
 \end{figure}
 
-Context stores the details of the domain to which the dataset belongs. Concepts correspond to names. Since the same name may be used in different contexts, multiple concepts can use the same column name. Similarly, a single concept may be associated with multiple names.
-Unit refers to the mathematical unit associated with a column. e.g. Kilogram, Hectares, etc. Name stores the column name. Type of data present in the dataset whether it is numerical, categorical, datetime etc are stored as data type. Data distribution refers to the distribution that best describes a column. e.g Normal, uniform, zipfian etc.
+If a user points LOKI at a new dataset, LOKI proposes a schema for it. Input for a labeling query that helps infer column name for a new dataset is a set of columns and the knowledge base. The goal of the query is to identify a list of N distinct concepts, one for each attribute, that best fit the data in columns. For achieving this goal LOKI takes into account the context, concept, column name (if any), unit used in the column data, type of data present and data distribution of the column. 
 
 \newtheorem{exmp}{Example}[section]
 \begin{exmp}
-	If DOKI is presented with the tabular dataset, then the documentation would store details about the columns and the dataset itself. For instance the values stored for column Fruithectares would be context: agriculture, column name: Fruithectares, unit: Hectares, Data type: Float, Data distribution: Uniform.
+	If LOKI is presented with~\ref{CropYields Dataset}, then the documentation would store details about columns and the dataset itself. For instance the values stored for column Fruithectares in~\ref{CropYields Dataset} would be context: agriculture, column name: Fruithectares, unit: Hectares, Data type: Float, Data distribution: Uniform.
 \end{exmp}
 
-\begin{center}
-	\begin{tabular}{||c c c||} 
-		\hline
-		Fruithectares & Vegcount & Fruityieldtons \\ [0.5ex]
-		\hline\hline
-		5.8 & 0 & 1.5 \\ 
-		\hline
-		0 & 1.26 & 0 \\
-		\hline
-		2.6 & 0 & 7.2 \\
-		\hline
-		4.05 & 0.089 & 1.1 \\
-		\hline
-		0.17 & 6.5 & 0.48 \\ [1ex] 
-		\hline
-	\end{tabular}
-\end{center}
+Context stores the details of the domain to which the dataset belongs. Concepts correspond to names. Since the same name may be used in different contexts, multiple concepts can use the same column name. Similarly, a single concept may be associated with multiple names.
+Unit refers to the mathematical unit associated with a column. e.g. Kilogram, Hectares, etc. Name stores the column name. Type of data present in the dataset whether it is numerical, categorical, datetime etc are stored as data type. Data distribution refers to the distribution that best describes a column. e.g Normal, uniform, zipfian etc.
 
-Once DOKI starts documenting the dataset, analyst does not have to document it again, and is well versed with the dataset through the information stored in LOKI. 
+\begin{table}
+	\label{CropYields Dataset}
+	\begin{center}
+		\begin{tabular}{||c c c||} 
+			\hline
+			Fruithectares & Vegcount & Fruityieldtons \\ [0.5ex]
+			\hline\hline
+			5.8 & 0 & 1.5 \\ 
+			\hline
+			0 & 1.26 & 0 \\
+			\hline
+			2.6 & 0 & 7.2 \\
+			\hline
+			4.05 & 0.089 & 1.1 \\
+			\hline
+			0.17 & 6.5 & 0.48 \\ [1ex] 
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{CropYields Dataset}
+\end{table}
 
-The core component of LOKI is a knowledge-base that is used to identify column names. The knowledge-base is broken down into two parts, one heuristic-based, and the other feedback-based. In short, LOKI will allow users to assemble schemas on-demand, both (re-)discovering and incrementally refining schema definitions in response to changing data needs. 
+Once LOKI starts documenting the dataset, analyst does not have to document it again, and is well versed with the dataset through information stored in knowledge base. The core component of LOKI is a knowledge-base that is used to identify column names. The knowledge-base is broken down into two parts, one heuristic-based, and the other feedback-based. In short, LOKI will allow users to assemble schemas on-demand, both (re-)discovering and incrementally refining schema definitions in response to changing data needs. 
 
 \subsection{Challenges}
+LOKI inferences column names 
 \begin{enumerate}
 	\item Column might match on multiple signatures
 	\item Similar concepts with different signatures
@@ -162,10 +167,7 @@ The core component of LOKI is a knowledge-base that is used to identify column n
 \end{enumerate}
 
 \section{Related Work}
-\todo[inline]{Poonam:rewrite, taken from HILDA paper} 
-Data distributions have been used for similar purposes in other work.  
-For example GestureQuery~\cite{nandi2013gestural} uses data similarity between two attributes to select candidate attributes for an equi-join.  
-To maximize the join arity, the system counts the number of times each value from one attribute appears in the other and a histogram is constructed from the counts for all of the values.
+Other works have used data distribution for similar purposes. For example GestureQuery~\cite{nandi2013gestural} uses data similarity between two attributes to select candidate attributes for an equi-join.  
 
 Wrangler \cite{kandel2011wrangler} and Potter's wheel \cite{raman2001potter} detect data domains through inclusion functions (e.g. regular expressions).
 Wrangler in particular infers the data type of a column and highlights errors based on inconsistent data types. 
@@ -191,7 +193,7 @@ There is an increasing number of datasets in which well-structured attributes
 LSH Ensemble is used in \cite{zhu2016lsh} to find domains that maximally contain a query dataset, which can help to find datasets that best augment a given set of data.
 
 \section{Research Plan}
-We plan several extensions as future work focused on building and
+We plan several extensions to LOKI focused on building and
 refining a knowledge-base for storing column-naming heuristics.
 • Use of contextual information: Contextual information
 such as ontologies, units and data domains could be used to augment
@@ -206,43 +208,9 @@ spectrum of data. For example, regular expression matchers could
 be used to detect geolocation data. Matchers which can identify
 synonymous labels could help experts in the curation process.
 
-\todo[inline]{Poonam:for reference} 
-To overcome the assumptions and limitations of the current
-framework we propose the following research plan: (1)
-We want to generalize candidate questions to include nonboolean
-atoms. In this way, same incomplete data in different
-candidate questions can be confirmed in one confirmation
-round. (2) The current framework assumes the probability
-distributions for incomplete data are given. However,
-this is not always feasible. We want to make use of the existing
-reliable data to estimate the probability distribution of
-incomplete data. (3) In many domains, there exist models
-that can be utilized to increase query result accuracy without
-consulting users. Currently, in the UDLM component,
-we mainly utilized the user-defined models to preprocess incomplete
-data at no cost. We want to explore how to learn
-models from system-user interactions. For instance, in data
-integration, possible schema matches are candidate models,
-one of which is a correct match. We can treat each candidate
-model as probabilistically related to the real model. We can
-integrate these candidate models with our current framework
-and adjust the confidence of a model on confirmation.
-The probability will converge on true model. This learned
-model will be utilized adaptively in subsequent queries. (4)
-Our current framework considers user feedback is always
-correct. However, humans may make mistakes. In crowdsourcing,
-humans may provide incorrect answers to tasks
-accidentally or on purpose. In medical expert systems, user
-feedback is obtained based on test results by machines. The
-test results may not be 100% accurate. We want to build
-a user profile to record the credibility of user feedback. We
-need to decide how to integrate this profile with our frame work and based on the correctness of the decisions made
-
 
 \section{Conclusion}
-\todo[inline]{Poonam:for reference} 
 This paper proposes the design of a system which would help build a knowledge base along with an interactive tool for populating the knowledge base. 
-\todo[inline]{Mention Query model?}
 
 
 %\end{document}  % This is where a 'short' article might terminate
